@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; user-scalable=no" />
+	<title>Game</title>
+	<link rel="stylesheet" type="text/css" href="fonts/stylesheet.css" />
+	<link href='http://fonts.googleapis.com/css?family=Changa+One' rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" type="text/css" href="rs-wp-v1.2.css" />
+	<link rel="stylesheet" type="text/css" href="js/build/css/intlTelInput.css" />
+	<link rel="stylesheet" type="text/css" href="js/build/css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="css/repon.css" />
+	<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/backstretch/jquery.backstretch.min.js"></script>
+	<script type="text/javascript" src="js/build/js/intlTelInput.js"></script>
+	<script type="text/javascript" src="js/jquery-mask.js"></script> 
+	<script type="text/javascript" src="js/themify.builder.module.plugins.js"></script>
+	
+	<script type="text/javascript">
+        /* <![CDATA[ */
+        var tbLocalScript = { 
+			"isTouch": "", 
+			"animationInviewSelectors": 
+			[
+				".post",
+				".bar .inner"
+			] 
+		};
+		
+        /* ]]> */
+</script>
+<script type="text/javascript" src="js/themify.builder.script.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript" src="js/game-card.js"></script>
+<script type="text/javascript">
+var $ = jQuery;
+$(document).ready(function(){
+	if($('.registration').length){
+		$('.registration').backstretch("images/bg-body.jpg");
+	}
+
+	$('.menu-mobi').click(function () {
+		$('.form-header').slideToggle();
+	});
+	$('#sort_categories .date-de').click(function () {
+		$('#sort_categories .date-de').css({
+		color : '#cce8f1',
+		fontWeight: '400'
+		});
+		return false;
+	});
+	$('html').click(function() {
+		var va_date = $('#sort_categories .date-de').val();
+		if(va_date == '') {
+		$('#sort_categories .date-de').css({
+		color : '#cce8f1',
+		fontWeight: '400'
+		});
+		}
+	});	
+	$("#mobile-number").intlTelInput({
+		autoHideDialCode: false
+	});
+	date_line();
+
+	jQuery('.right-game form input').click(function(){
+		jQuery(this).removeClass('error');
+	});
+
+	$("#sort_categories").validate({
+		rules: {
+			txt_name: {
+				required: true,
+				minlength: 2
+			},
+			birthday: {
+				required: true,
+				date: true
+			},
+			txt_email: {
+				required: true,
+				email: true
+			},
+			txt_number:{
+				required: true,
+				number: true
+			}
+		}
+	});
+
+	jQuery('.right-game form .select-mon').change(function(){
+		jQuery(this).addClass('validate');
+	});
+
+});
+function date_line() {
+	jQuery("#input-date").attr('placeholder','Enter your birthday');
+	jQuery("#input-date").mask("99/99/9999",{});
+}
+
+
+//$(document).ready(function(){
+	//setInterval(show_star,2000);
+//});
+
+//function show_star(){			
+	//$('#star-wrap').find('img.appear').addClass('exit').removeClass('appear');
+	
+	//setTimeout(500);
+	
+	//var index;
+	//var top;
+	//var left;
+	//var _html=$('#star-wrap').html();
+	
+	//for(var i=0; i<=10; i++)
+	//{
+	//	index=randomIntFromInterval(1,3);
+		//top=randomIntFromInterval(10,50);
+		//left=randomIntFromInterval(10,90);
+		//_html += '<img class="appear animated" alt="" src="images/star' + index + '.png" style="top:' + top + '%; left:' + left + '%"/>';
+//	}
+	
+	//$('#star-wrap').html(_html);
+	//$('.animated.exit').remove();
+//}
+//function show_meteor(){
+	//var _html=$('#content').html();
+	//_html += '<img class="meteor-appear animated" alt="" src="images/star.png" />';
+	
+	//$('#content').html(_html);
+//}
+//function randomIntFromInterval(min,max){
+	//return Math.floor(Math.random()*(max-min+1)+min);
+//}
+</script>
+<!-- 
+	<script type="text/javascript" src="js/rs-custom.js"></script> -->
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<!--[if IE 8]>
+		<style type="text/css">
+			.inner-content{
+				max-width:980px;
+			}
+		</style>
+	<![endif]-->  
+</head>
+<body class="registration">
+<div id="wrapper">
+	<canvas id="galaxy"></canvas>
+	<div id="header">
+		<div class="inner-container">
+			<a href="" class="logo-header"><img src="images/logo.png" alt="" /></a>
+			<a class="menu-mobi" href="javascript:;"></a>
+			<div class="form-header">
+				<form action="">
+					<p><input class="input-mail" type="text" onblur="if (this.value == '') {this.value = 'Votre e-mail';}" onfocus="if (this.value == 'Votre e-mail') {this.value = '';}" name="" value="Votre e-mail" /></p>
+					<p><input class="input-pass" type="text" onblur="if (this.value == '') {this.value = 'Mot de passe';}" onfocus="if (this.value == 'Mot de passe') {this.value = '';}" name="" value="Mot de passe" /></p>
+					<p><a  class="pass-none" href="">Mot de passe oublié ?</a><input type="submit" name="" value="IDENTIFIEZ-VOUS" /></p>
+					<a class="pass-block"  href="">Mot de passe oublié ?</a>
+				</form>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div id="star-wrap">
+		<div id="content">
+			 <div class="inner-container">
+				<h2 class="text-title">INSCRIVEZ-VOUS et recevez <span>30min de consultation VOYANCE gratuite</span></h2>
+				<div class="clear"></div>
+				<div class="left-game">
+					<div class="top-registration">
+						<h2 class="title-done">to discuss game result with a <a href="#">real medium</a> choose it and register by filling form </h2>
+						<p>TIREZ <span class="number">5</span> CARTES</p>
+						<span class="number1"></span>
+						<span class="number2"></span>
+						<span class="number3"></span>
+						<span class="number4"></span>
+						<span class="number5"></span>
+					</div>	
+					<div class="box-registration">
+						<div class="list-card">
+							<div class="card">
+								<ul>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+									<li><img src="images/card.png" alt="" /></li>
+								</ul>
+							</div>
+						</div>
+						<div class="choose-card">
+							<ul>
+								<li><img src="images/card-w.png" alt="" /></li>
+								<li><img src="images/card-w.png" alt="" /></li>
+								<li><img src="images/card-w.png" alt="" /></li>
+								<li><img src="images/card-w.png" alt="" /></li>
+								<li><img src="images/card-w.png" alt="" /></li>
+							</ul>
+							<div class="choose-people">
+								<h6>choisissez votre consultant</h6>
+								<ul>
+									<li><img src="images/people1.png" alt="alexios" /></li>
+									<li><img src="images/people2.png" alt="maria" /></li>
+									<li><img src="images/people1.png" alt="alexios" /></li>
+									<li><img src="images/people2.png" alt="maria" /></li>
+								</ul>
+								<span class="name-people"></span>
+								<a href="#" class="btn-prev"></a>
+								<a href="#" class="btn-next"></a>
+							</div>
+							<a href="#" class="btn-next-form">je choisis ce demium</a>
+						</div>
+					</div>
+				</div>
+				<div class="right-game">
+					<h1>VOYANCE <span>100% GRATUITE</span></h1> 
+					<form action="" id="sort_categories">
+						<p><img src="images/img-form.png" alt="" /></p>
+						<div class="top-form" style="display:none;">
+							<p>Pour contacter Alexios <span class="span-bold">Demandez votre voyance !</span></p>
+							<a href="#" class="btn-prev-choose">je choisis ce demium</a>
+							<img class="img-form-right" src="images/img-form1.png" alt="" />
+							<div class="clear"></div>
+						</div>
+						<div class="le-couple">
+							<p>
+								<select class="select-mon" id="i_form_domain">
+									<option value="1">Le couple</option>
+									<option value="1">Mon domaine est</option>
+									<option value="1">Mon domaine est</option>
+									<option value="1">Mon domaine est</option>
+								</select>
+							</p>
+							<div class="inner-partenaire" style="display:none;">
+								<p><input id="i_form_firstname" type="text" onblur="if (this.value == '') {this.value = 'Prenom de votre partenaire';}" onfocus="if (this.value == 'Prenom de votre partenaire') {this.value = '';}" name="" value="Prenom de votre partenaire" /></p>
+								<p>
+									<select class="select-mon">
+										<option value="1">C’est un homme</option>
+										<option value="1">C’est un homme</option>
+										<option value="1">C’est un homme</option>
+										<option value="1">C’est un homme</option>
+									</select>
+								</p>
+							</div>
+						</div>
+						<p><input class="mon-nom" type="text" placeholder="Mon nom est" name="txt_name" /></p>
+						<p><input name="birthday" type="text" id="input-date" class="date-de" value="Date de naissance" /></p>
+						<p>
+							<select class="select-mon" id="slt-mon">
+								<option value="1">Mon domaine est</option>
+								<option value="1">Mon domaine est</option>
+								<option value="1">Mon domaine est</option>
+								<option value="1">Mon domaine est</option>
+							</select>
+						</p>
+						<p>
+						<input class="mon-mail" type="text" placeholder="E-mail" name="txt_email" /></p>
+						<div class="select-start">
+							<p><input id="mobile-number" type="text" value="+ 34" />
+								<input class="nomber-de" type="text" placeholder="Numero de telephone" name="txt_number"/>	
+							</p>
+						</div>
+						<p><input type="submit" name="" value="s"/></p>
+					</form>
+					<div class="webcam-leading">
+						<ul>
+							<li class="tchat-leading1"><a href="">Tchat webcam</a></li>
+							<li class="tchat-leading2"><a href="">Recherche detailee</a></li>
+							<li class="tchat-leading3"><a href="">Anonyme et discret</a></li>
+							<li class="tchat-leading4"><a href="">100% Securise</a></li>
+							<div class="clear"></div>
+						</ul>
+					</div>
+					<p>Comme vous, nous detestons le SPAM, nous ne partagerons jamais votre email avec quelqu'un d'autre </p>
+				</div>
+				<div class="clear"></div>
+			 </div>
+		</div><!--content-->
+	</div>
+	<div class="push"></div>
+</div>
+<div id="footer">
+	<div class="inner-container">
+		<p><a href="">Voyancera © 2014</a></p>
+		<ul>
+			<li><a href=""> CGV</a></li>
+			<li><a href="">Mentions légales</a></li>
+			<li><a href="">Contact </a></li>
+		</ul>
+		<div class="clear"></div>
+	</div>
+</div><!--footer-->
+</body>
+</html>
